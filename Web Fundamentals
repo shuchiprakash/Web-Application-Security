@@ -1,0 +1,5 @@
+Once the browser knows the server's IP address, it can ask the server for the web page. This is done with a HTTP GET request.
+
+HTTPS is a secure (encrypted) version of HTTP, it works in more or less the same way. This uses TLS 1.3 (normally) encryption in order to communicate without:
+-Other parties being able to read the data
+-Other parties being able to modify the data
