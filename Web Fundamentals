@@ -3,3 +3,42 @@ Once the browser knows the server's IP address, it can ask the server for the we
 HTTPS is a secure (encrypted) version of HTTP, it works in more or less the same way. This uses TLS 1.3 (normally) encryption in order to communicate without:
 -Other parties being able to read the data
 -Other parties being able to modify the data
+
+By default, HTTP runs on port 80 and HTTPS runs on port 443. Many CTFs are based around websites, so it's useful to know that if port 80 is open, there's likely a web server listening that you can attack and exploit.
+What port do web server normally listen to?
+80
+
+GET request retrieves the data
+POST requests are used to send data to a web server, like adding comment or performing login
+A HTTP request can be broken down into parts. The first line is a verb and a path for the server, such as
+GET /index.html
+Here's an example for a GET request retrieving a simple JS file:
+
+GET /main.js HTTP/1.1
+Host: 192.168.170.129:8081
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+Accept: */*
+Referer: http://192.168.170.129:8081/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+From the headers, you can tell what I performed the request from (Chrome version 80, from Windows 10). This is useful for forensics and analysing packet captures.
+
+
+Response from the server
+A basic breakdown of the status codes is:
+
+100-199: Information
+200-299: Successes (200 OK is the "normal" response for a GET)
+300-399: Redirects (the information you want is elsewhere)
+400-499: Client errors (You did something wrong, like asking for something that doesn't exist)
+500-599: Server errors (The server tried, but something went wrong on their side)
+For more infor refer https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+COOKIES, yummy-
+Cookies are small bits of data that are stored in your browser. Each browser will store them separately, so cookies in Chrome won't be available in Firefox.
+The most common use of cookies:-
+-session management
+-advertising
+Cookies are normally sent by each HTTP request made to server
